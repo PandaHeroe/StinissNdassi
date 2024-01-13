@@ -1,0 +1,85 @@
+﻿@using StinissNdassi.Web.Pages
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
+<div class="page new-skin">
+		
+		<!-- preloader -->
+		<div class="preloader">
+			<div class="centrize full-width">
+				<div class="vertical-center">
+					<div class="spinner">
+						<div class="double-bounce1"></div>
+						<div class="double-bounce2"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- background -->
+		<div class="background gradient">
+			<ul class="bg-bubbles">
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			  <li></li>
+			</ul>
+		</div>
+
+		<!--
+			Container
+		-->
+		<div class="container opened" data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
+
+			<!--
+				Header
+			-->
+			<Header></Header>
+			<!-- Card - Started-->
+			<div class="card-started" id="home-card">
+
+				<!--Profile-->
+				<Profile></Profile>
+
+			</div>
+
+			<!-- Card - About -->
+			<About></About>
+			<!-- Card - Resume -->
+			<Resume></Resume>
+			<!--Card - Works-->
+			@* <Works></Works> *@
+
+			<!--Card - Blog-->
+			@* <Blog></Blog> *@
+
+			<!--Card - Contacts-->
+			<Contacts></Contacts>
+		@Body
+
+		</div>
+
+		<div class="s_overlay"></div>
+		<SideBar></SideBar>
+
+	</div>
+
+@code{
+	
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			await JS.InvokeVoidAsync("initScript", null);
+			
+		}
+	}
+
+	
+}
